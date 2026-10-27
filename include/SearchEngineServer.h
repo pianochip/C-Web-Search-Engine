@@ -6,6 +6,7 @@
 #include <wfrest/HttpServer.h>
 #include <sw/redis++/redis++.h>
 #include "KeyRecommander.h"
+#include "WebPageQuery.h"
 using namespace wfrest;
 using namespace std;
 
@@ -21,5 +22,6 @@ private:
     wfrest::HttpServer _server; // 使用 wfrest 服务器
     unsigned short _port;
     WFFacilities::WaitGroup _waitGroup;
+    WebPageQuery _webPageQuery;
 };
 
