@@ -5,6 +5,9 @@
 #include "../include/SearchEngineServer.h"
 #include "../include/DirScanner.h"
 #include "../include/PageLib.h"
+#include "../include/PageLibPreprocessor.h"
+#include "../include/WebPage.h"
+#include "../include/WebPageQuery.h"
 
 int main(int argc, char** argv){
     remove("../data/dict.dat");
@@ -44,6 +47,11 @@ int main(int argc, char** argv){
     pageLib.create();
     pageLib.store("../data/newripepage.dat", "../data/newoffset.dat");
     cout << ">>> 网页库 (newripepage.dat) 和偏移库 (newoffset.dat) 构建完成！" << "\n";
+
+    //网页预处理
+    cout << ">>> 开始网页预处理(查重与倒排索引构建)..." << "\n";
+    PageLibPreprocessor preprocessor;
+    preprocessor.doProcess();
 
     SearchEngineServer server(8080);
     server.start();

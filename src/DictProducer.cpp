@@ -141,7 +141,6 @@ void DictProducer::buildCnDict() {
         ifs.seekg(std::ios_base::beg);
 
         // 2.2 动态申请内存并一次性读取整篇文章
-        // 注意：加了 () 会自动初始化为 0，防止字符串没有结束符 '\0'
         char *buff = new char[length + 1](); 
         ifs.read(buff, length);
         string txt(buff);
